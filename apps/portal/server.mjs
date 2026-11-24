@@ -109,7 +109,7 @@ async function handle(req, res) {
   if (pathname === '/api/net') {
     const addresses = lanAddresses();
     return sendJson(res, 200, {
-      ip: addresses[0] || null,
+      ip: process.env.PUBLIC_HOST || addresses[0] || null,
       addresses,
       port: PORT
     });

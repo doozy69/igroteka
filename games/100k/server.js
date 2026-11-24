@@ -495,7 +495,7 @@ const server = http.createServer(async (req, res) => {
 
   if (pathname === '/api/net') {
     res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-cache' });
-    res.end(JSON.stringify({ ip: pickLanAddress(), port: server.address()?.port || activePort }));
+    res.end(JSON.stringify({ ip: process.env.PUBLIC_HOST || pickLanAddress(), port: server.address()?.port || activePort }));
     return;
   }
 

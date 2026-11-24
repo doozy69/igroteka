@@ -296,7 +296,7 @@ app.get('/api/health', (_req, res) => {
 
 app.get('/api/net', (_req, res) => {
   res.json({
-    ip: pickLanAddress(),
+    ip: process.env.PUBLIC_HOST || pickLanAddress(),
     port: server.address()?.port || PORT,
     addresses: lanAddresses()
   });

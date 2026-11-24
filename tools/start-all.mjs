@@ -154,7 +154,7 @@ if (busy.length) {
 
 for (const entry of entries) ensureDependencies(entry.name, entry.dir);
 
-const lanIp = lanAddresses()[0] || null;
+const lanIp = process.env.PUBLIC_HOST || lanAddresses()[0] || null;
 const publicHost = lanIp || 'localhost';
 const localPortalUrl = `http://localhost:${portalPort}/`;
 const portalUrl = `http://${publicHost}:${portalPort}/`;

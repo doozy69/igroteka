@@ -92,6 +92,8 @@ export function normalizePlayerId(raw) {
 
 /** IPv4-адреса этой машины в локальной сети. */
 export function lanAddresses() {
+  if (process.env.PUBLIC_HOST) return [process.env.PUBLIC_HOST];
+
   const found = [];
   for (const [name, list] of Object.entries(os.networkInterfaces())) {
     for (const net of list ?? []) {
