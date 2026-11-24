@@ -13,7 +13,7 @@
    или скачать ZIP: на GitHub **Code → Download ZIP**.
 3. Больше ничего скачивать не нужно. `node_modules`, история игр и локальные данные в репозиторий не входят — зависимости установятся при первом запуске.
 
-Docker для обычного запуска не нужен. Готовый образ описан в разделе [Docker](#docker).
+
 
 ## Запуск
 
@@ -66,8 +66,6 @@ igroteka/
   games.json           реестр игр: название, порт, описание, цвет
   start.bat            одна команда запуска
   package.json         npm start и npm run validate
-  Dockerfile            образ со всеми играми
-  docker-compose.yml    запуск контейнера с портами
   tools/
     start-all.mjs      лаунчер: проверка портов, npm install, запуск, остановка
     validate.mjs       проверка реестра и структуры
@@ -127,41 +125,6 @@ npm start
 
 Игры не имеют авторизации и рассчитаны на доверенную локальную сеть. Не пробрасывайте порты `8080–8199` в интернет. Если нужен доступ снаружи, ставьте reverse proxy с авторизацией или VPN.
 
-## Docker
-
-Готовый образ лежит в [Releases](https://github.com/doozy69/igroteka/releases): `igroteka-1.0.0-linux-amd64.tar`.
-
-```bash
-docker load -i igroteka-1.0.0-linux-amd64.tar
-```
-
-Запуск через `docker-compose.yml`:
-
-```powershell
-$env:PUBLIC_HOST = "192.0.2.10"
-docker compose up -d --no-build
-```
-
-`PUBLIC_HOST` — LAN-IP компьютера. Он нужен, чтобы QR-коды и ссылки на игры вели на хост, а не на внутренний адрес контейнера.
-
-Или без compose, одной командой:
-
-```bash
-docker run -d --name igroteka --restart unless-stopped \
-  -p 8080:8080 -p 8101:8101 -p 8102:8102 -p 8103:8103 \
-  -e NO_OPEN=1 -e PUBLIC_HOST=192.0.2.10 \
-  -v "$PWD/games/100k/data:/app/games/100k/data" \
-  -v "$PWD/games/svoy/data:/app/games/svoy/data" \
-  -v "$PWD/games/quiz/data:/app/games/quiz/data" \
-  igroteka:1.0.0
-```
-
-Образ собран под `linux/amd64`. Для Raspberry Pi/ARM:
-
-```bash
-docker buildx build --platform linux/arm64 -t igroteka:1.0.0 .
-```
-
 ## Релизы
 
 Установщик не нужен: это Node.js-приложение. Достаточно скачать ZIP из [Releases](https://github.com/doozy69/igroteka/releases), распаковать и запустить `start.bat` (нужен Node.js 22+).
@@ -169,7 +132,6 @@ docker buildx build --platform linux/arm64 -t igroteka:1.0.0 .
 В релизе:
 
 - исходники в ZIP;
-- Docker-образ `igroteka-1.0.0-linux-amd64.tar`;
 - `SHA256SUMS` для проверки архива.
 
 ## Если что-то не работает
