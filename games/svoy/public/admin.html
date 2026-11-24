@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Админ — Своя игра</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+<div class="container">
+  <h1>Панель администратора</h1>
+  <div id="meta" class="muted"></div>
+  <div class="row" style="margin:12px 0">
+    <a class="muted" id="tvLink" href="/display.html" target="_blank">Открыть экран для ТВ</a>
+    <a class="muted" href="/editor.html" target="_blank">Редактор паков</a>
+    <a class="muted" href="/" target="_blank">Главная</a>
+  </div>
+
+  <section class="card">
+    <h2>Пак вопросов</h2>
+    <div class="row">
+      <select id="packSelect"></select>
+      <button id="loadPack">Загрузить пак</button>
+      <span id="packStatus" class="muted"></span>
+    </div>
+    <div class="row" style="margin-top:10px">
+      <button id="startR1" class="secondary">Начать 1 раунд</button>
+      <button id="startR2" class="secondary">Начать 2 раунд</button>
+      <button id="startR3" class="secondary">Начать 3 раунд</button>
+      <button id="startFinal" class="secondary">Перейти к финалу</button>
+      <button id="finishGame" class="warn">Завершить игру</button>
+    </div>
+  </section>
+
+  <!-- Банк вопросов «Кота в мешке»: сколько всего/сыграно/осталось и сброс статусов -->
+  <section class="card">
+    <h2>Банк «Кота в мешке»</h2>
+    <div id="catBankBox" class="muted">Загрузка…</div>
+    <div class="row" style="margin-top:10px">
+      <button id="resetCatBank" class="secondary">Все вопросы — не сыграны</button>
+      <span class="muted">Сброс статусов не меняет уже открытый вопрос.</span>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Игроки и очки</h2>
+    <div id="playersAdmin"></div>
+  </section>
+
+  <!-- Итоги игры: победители и полная таблица (появляется после «Завершить игру») -->
+  <section class="card" id="finishCard" style="display:none">
+    <h2>Игра завершена</h2>
+    <div id="finishAdmin"></div>
+  </section>
+
+  <section class="card">
+    <h2>Текущее состояние / табло</h2>
+    <div id="phaseInfo" class="muted"></div>
+    <div id="board"></div>
+  </section>
+
+  <section class="card" id="currentCard" style="display:none">
+    <h2>Текущий вопрос</h2>
+    <div id="currentBox"></div>
+    <div class="row" style="margin-top:10px">
+      <button id="buzzOpen" class="secondary">Открыть кнопку (buzz)</button>
+      <button id="buzzReset" class="secondary">Сбросить buzz</button>
+      <button id="buzzClose" class="secondary">Закрыть buzz</button>
+      <button id="toggleAnswer" class="secondary">Показать/скрыть ответ</button>
+      <button id="toggleBoard" class="secondary">Показать табло на ТВ</button>
+    </div>
+    <div class="row" style="margin-top:10px">
+      <button id="judgeCorrect" class="good">Верно (+)</button>
+      <button id="judgeWrong" class="bad">Неверно (-)</button>
+      <input id="customDelta" type="number" placeholder="Сумма (по умолч. номинал)" style="width:220px" />
+      <button id="closeQuestion" class="warn">Закрыть вопрос (сыграно)</button>
+    </div>
+    <div id="specialControls" style="margin-top:12px"></div>
+  </section>
+
+  <section class="card" id="finalCard" style="display:none">
+    <h2>Финал</h2>
+    <div class="row">
+      <button id="revealFinal">Показать вопрос финала (на ТВ)</button>
+      <button id="resetFinalThemes" class="secondary">Вернуть все темы</button>
+    </div>
+    <div class="muted" id="finalHint" style="margin-top:8px"></div>
+    <div id="finalThemes" class="theme-grid" style="margin-top:10px"></div>
+    <div id="finalAdmin"></div>
+  </section>
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/admin.js"></script>
+</body>
+</html>

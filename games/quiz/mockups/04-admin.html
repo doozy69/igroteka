@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>04 · Ведущий</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="phone">
+<div class="screen">
+  <div class="top">
+    <div class="badge amber">ведущий</div>
+    <div class="spacer"></div>
+    <div class="chip mono">7K4Q</div>
+    <div class="icon-btn" title="Завершить игру">■</div>
+  </div>
+
+  <div class="card" style="gap:6px">
+    <div class="row-between">
+      <div class="small">Вопрос · раунд 1</div>
+      <div class="small">читайте вслух</div>
+    </div>
+    <div style="font-size:19px;font-weight:650;line-height:1.35">Столица Австралии?</div>
+  </div>
+
+  <div class="card" style="flex-direction:row;align-items:center;gap:14px">
+    <div style="flex:1">
+      <div class="small">Приём ответов</div>
+      <div class="mono" style="font-size:30px;font-weight:800;line-height:1.1">00:07</div>
+    </div>
+    <div style="text-align:right">
+      <div class="mono" style="font-size:24px;font-weight:750;color:var(--cyan)">3</div>
+      <div class="small">нажатия</div>
+    </div>
+  </div>
+
+  <div class="card" style="gap:8px">
+    <div class="row-between">
+      <h2>Очередь</h2>
+      <span class="small">отвечает лидер</span>
+    </div>
+
+    <div class="qitem leader" style="flex-wrap:wrap;row-gap:8px">
+      <span class="rank">1</span>
+      <span class="avatar" style="background:#22d3ee">1</span>
+      <span class="nick">Игрок 1</span>
+      <span class="time">0.00 с</span>
+      <div style="display:flex;gap:8px;width:100%">
+        <button class="btn" style="flex:1;height:44px;background:var(--lime);color:#132000;font-size:15px">Верно +1</button>
+        <button class="btn btn-ghost" style="flex:1;height:44px;font-size:15px;color:var(--rose);border-color:rgba(251,113,133,.35)">Неверно</button>
+      </div>
+    </div>
+
+    <div class="qitem">
+      <span class="rank">2</span>
+      <span class="avatar" style="background:#a3e635">2</span>
+      <span class="nick">Игрок 2</span>
+      <span class="time">+0.42 с</span>
+    </div>
+
+    <div class="qitem">
+      <span class="rank">3</span>
+      <span class="avatar" style="background:#fbbf24">3</span>
+      <span class="nick">Игрок 3</span>
+      <span class="time">+0.91 с</span>
+    </div>
+  </div>
+
+  <div style="margin-top:auto;display:flex;flex-direction:column;gap:10px">
+    <button class="btn btn-ghost" style="border-color:rgba(34,211,238,.45);color:var(--cyan)">Я знаю! <span class="small">— вы тоже играете</span></button>
+    <button class="btn btn-ghost">Закрыть приём ответов</button>
+    <button class="btn btn-primary" disabled>Следующий вопрос</button>
+  </div>
+</div>
+</body>
+</html>

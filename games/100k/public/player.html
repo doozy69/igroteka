@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0a1020" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <title>Игрок — 100 к одному</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body class="player">
+  <div class="player-shell">
+    <header class="player-top">
+      <a class="brand-mark small" href="/" aria-label="100 к одному — на главную">
+        <span class="brand-100">100</span>
+        <span class="brand-word">к одному</span>
+      </a>
+      <div id="playerInfo" class="player-id"></div>
+    </header>
+
+    <section class="score-card" id="status"></section>
+
+    <section class="player-panel" id="teamSwitchCard" style="display:none">
+      <h2>Ваша команда</h2>
+      <p class="muted small">До начала игры команду можно поменять.</p>
+      <div class="team-switch" id="teamSwitch"></div>
+    </section>
+
+    <section class="player-panel player-buzz" id="buzzCard" style="display:none">
+      <h2>Розыгрыш</h2>
+      <div class="player-question" id="buzzQuestion"></div>
+      <div class="player-status" id="buzzStatus"></div>
+      <button id="buzzButton" class="buzz-button">Я отвечаю!</button>
+    </section>
+
+    <section class="player-panel" id="reverseCard" style="display:none">
+      <h2>Игра наоборот</h2>
+      <div class="player-question" id="reverseQuestion"></div>
+      <div class="reverse-timer" id="reverseTimer"></div>
+      <div class="player-status" id="reverseInfo"></div>
+      <p class="muted small">Совещайтесь с командой. Капитан назовёт версию ведущему.</p>
+    </section>
+
+    <section class="player-panel" id="bigCard" style="display:none">
+      <h2>Большая игра</h2>
+      <div id="bigInfo" class="player-status"></div>
+      <div class="big-timer" id="bigTimer"></div>
+      <div id="bigResult" class="big-result hidden"></div>
+      <p class="muted small">Отвечайте ведущему вслух.</p>
+    </section>
+
+    <section class="player-panel">
+      <h2>Составы команд</h2>
+      <div id="teams"></div>
+    </section>
+  </div>
+  <script type="module" src="/js/player.js"></script>
+</body>
+</html>

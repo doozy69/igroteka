@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f1f4fa" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <title>100 к одному</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body class="lobby">
+  <div class="lobby-shell">
+    <header class="brand-bar">
+      <a class="brand-mark" href="/" aria-label="100 к одному — на главную">
+        <span class="brand-100">100</span>
+        <span class="brand-word">к одному</span>
+      </a>
+      <span class="brand-note">живая игра для компании</span>
+    </header>
+
+    <section class="lobby-hero">
+      <span class="hero-kicker">Телевикторина у вас дома</span>
+      <h1>Угадайте, что сказали сто человек.</h1>
+      <p class="hero-lead">
+        Соберите две команды, откройте экран на телевизоре и управляйте раундами
+        с ноутбука. Телефоны станут пультами для ответов.
+      </p>
+    </section>
+
+    <div class="lobby-grid">
+      <section class="studio-card" aria-labelledby="createTitle">
+        <div class="studio-card-head">
+          <span class="studio-label">Ведущий</span>
+          <h2 id="createTitle">Создать игру</h2>
+          <p>
+            Вы получите панель управления и ссылку на экран для ТВ.
+            Всё остальное игроки увидят на своих телефонах.
+          </p>
+        </div>
+        <label class="field">
+          <span>Название игры</span>
+          <input id="roomName" placeholder="Например, пятничный эфир" autocomplete="off" />
+        </label>
+        <button id="createRoom" class="primary">Создать комнату</button>
+        <div id="createResult" class="form-note"></div>
+      </section>
+
+      <section class="join-card" aria-labelledby="joinTitle">
+        <div class="join-card-head">
+          <span class="studio-label">Игроки</span>
+          <h2 id="joinTitle">Войти в игру</h2>
+        </div>
+
+        <div id="joinBanner" class="hidden"></div>
+
+        <div class="join-fields">
+          <label class="field">
+            <span>Ваше имя</span>
+            <input id="playerName" placeholder="Как вас зовут?" autocomplete="nickname" />
+          </label>
+          <label class="field">
+            <span>Команда</span>
+            <select id="teamSelect"></select>
+          </label>
+        </div>
+
+        <div class="room-head">
+          <h3>Активные комнаты</h3>
+        </div>
+        <div id="roomsList" class="room-list">
+          <div class="muted small">Загрузка…</div>
+        </div>
+
+        <p class="join-footnote">
+          Играете с телефона? Наведите камеру на QR-код на экране ТВ — ссылка
+          откроется сама.
+        </p>
+      </section>
+    </div>
+
+    <footer class="lobby-foot">
+      <span>Локальная вечеринка без регистрации и базы данных.</span>
+      <span>100 к одному</span>
+    </footer>
+  </div>
+  <script type="module" src="/js/index.js"></script>
+</body>
+</html>

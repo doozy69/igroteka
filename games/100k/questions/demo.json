@@ -1,0 +1,108 @@
+{
+  "title": "Демо-пак",
+  "rounds": [
+    {
+      "type": "simple",
+      "text": "Что люди берут с собой в отпуск?",
+      "answers": [
+        { "text": "Чемодан", "points": 32, "aliases": ["сумка", "багаж"] },
+        { "text": "Паспорт", "points": 24, "aliases": ["документы"] },
+        { "text": "Телефон", "points": 18, "aliases": ["смартфон"] },
+        { "text": "Деньги", "points": 12, "aliases": ["кошелек", "карту"] },
+        { "text": "Фотоаппарат", "points": 8, "aliases": ["камеру"] },
+        { "text": "Купальник", "points": 6, "aliases": ["плавки"] }
+      ]
+    },
+    {
+      "type": "double",
+      "text": "Что можно найти на кухне?",
+      "answers": [
+        { "text": "Холодильник", "points": 30, "aliases": [] },
+        { "text": "Плита", "points": 22, "aliases": ["духовка"] },
+        { "text": "Кастрюля", "points": 18, "aliases": ["сковорода", "посуда"] },
+        { "text": "Нож", "points": 14, "aliases": [] },
+        { "text": "Чайник", "points": 10, "aliases": [] },
+        { "text": "Тарелка", "points": 6, "aliases": ["тарелки"] }
+      ]
+    },
+    {
+      "type": "triple",
+      "text": "Почему человек опаздывает на работу?",
+      "answers": [
+        { "text": "Пробки", "points": 35, "aliases": ["пробка", "дорога"] },
+        { "text": "Проспал", "points": 27, "aliases": ["будильник"] },
+        { "text": "Транспорт", "points": 15, "aliases": ["автобус", "метро"] },
+        { "text": "Погода", "points": 10, "aliases": ["дождь", "снег"] },
+        { "text": "Дети", "points": 8, "aliases": ["ребенок"] },
+        { "text": "Забыл вещи", "points": 5, "aliases": ["ключи"] }
+      ]
+    },
+    {
+      "type": "reverse",
+      "text": "Самый известный домашний питомец?",
+      "answers": [
+        { "text": "Кошка", "points": 15, "aliases": ["кот"] },
+        { "text": "Собака", "points": 30, "aliases": ["пес"] },
+        { "text": "Попугай", "points": 60, "aliases": ["птица"] },
+        { "text": "Хомяк", "points": 120, "aliases": [] },
+        { "text": "Рыбки", "points": 180, "aliases": ["рыба", "аквариум"] },
+        { "text": "Черепаха", "points": 240, "aliases": [] }
+      ]
+    },
+    {
+      "type": "big",
+      "questions": [
+        {
+          "text": "Что можно забыть дома?",
+          "answers": [
+            { "text": "Ключи", "points": 45, "aliases": ["ключ"] },
+            { "text": "Телефон", "points": 30, "aliases": ["смартфон"] },
+            { "text": "Кошелек", "points": 15, "aliases": ["деньги"] },
+            { "text": "Зонт", "points": 6, "aliases": ["зонтик"] },
+            { "text": "Пропуск", "points": 4, "aliases": ["карту"] }
+          ]
+        },
+        {
+          "text": "Что едят на завтрак?",
+          "answers": [
+            { "text": "Кашу", "points": 38, "aliases": ["овсянка"] },
+            { "text": "Яичницу", "points": 28, "aliases": ["яйца", "омлет"] },
+            { "text": "Бутерброд", "points": 18, "aliases": ["сэндвич"] },
+            { "text": "Кофе", "points": 10, "aliases": [] },
+            { "text": "Хлопья", "points": 6, "aliases": ["мюсли"] }
+          ]
+        },
+        {
+          "text": "Кто работает ночью?",
+          "answers": [
+            { "text": "Охранник", "points": 40, "aliases": ["сторож"] },
+            { "text": "Врач", "points": 25, "aliases": ["медик"] },
+            { "text": "Таксист", "points": 12, "aliases": ["водитель"] },
+            { "text": "Пекарь", "points": 8, "aliases": ["хлеб"] },
+            { "text": "Диспетчер", "points": 5, "aliases": [] }
+          ]
+        },
+        {
+          "text": "Что бывает круглым?",
+          "answers": [
+            { "text": "Мяч", "points": 42, "aliases": ["шар"] },
+            { "text": "Солнце", "points": 20, "aliases": [] },
+            { "text": "Колесо", "points": 16, "aliases": [] },
+            { "text": "Тарелка", "points": 10, "aliases": [] },
+            { "text": "Луна", "points": 7, "aliases": [] }
+          ]
+        },
+        {
+          "text": "Что берут в поход?",
+          "answers": [
+            { "text": "Палатку", "points": 36, "aliases": ["палатка"] },
+            { "text": "Рюкзак", "points": 24, "aliases": [] },
+            { "text": "Спички", "points": 14, "aliases": ["зажигалку"] },
+            { "text": "Кружку", "points": 9, "aliases": ["посуда"] },
+            { "text": "Компас", "points": 6, "aliases": [] }
+          ]
+        }
+      ]
+    }
+  ]
+}

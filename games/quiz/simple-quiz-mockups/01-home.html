@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Quiz — Главная</title>
+  <style>
+    :root {
+      --bg: #0b0f1a;
+      --surface: #141a2b;
+      --text: #e8eefc;
+      --accent: #22d3ee;
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, sans-serif;
+    }
+
+    .screen {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 24px;
+      gap: 16px;
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .description {
+      color: var(--text);
+      opacity: 0.8;
+      margin-bottom: 16px;
+    }
+
+    .game-list {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      overflow-y: auto;
+    }
+
+    .game-card {
+      background: var(--surface);
+      padding: 16px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: transform 0.2s, opacity 0.2s;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .game-card:hover {
+      transform: scale(1.01);
+    }
+
+    .game-title {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .game-info {
+      font-size: 14px;
+      color: var(--text);
+      opacity: 0.7;
+    }
+
+    .create-btn {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 16px;
+      border-radius: var(--radius);
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 16px;
+    }
+
+    .create-btn:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <div class="screen">
+    <h1>Simple Quiz 🚀</h1>
+    <p class="description">Кто быстрее ответит?</p>
+
+    <div class="game-list">
+      <!-- Примеры существующих игр -->
+      <div class="game-card">
+        <div class="game-title">⏱️ Кто быстрей — Игра 1</div>
+        <div class="game-info">Игроки: 3 | Вопросы: 5</div>
+      </div>
+    </div>
+
+    <button class="create-btn">Создать игру</button>
+  </div>
+</body>
+</html>

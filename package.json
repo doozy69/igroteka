@@ -1,0 +1,13 @@
+{
+  "name": "igroteka",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Локальная платформа независимых игр",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node tools/start-all.mjs",
+    "validate": "node tools/validate.mjs"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "port": 8103,
+  "maxPlayers": 12,
+  "historyLimit": 200,
+  "autoOpenBrowser": true,
+  "autoPort": false
+}

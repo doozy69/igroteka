@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#080d1b" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <title>Админ — 100 к одному</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body class="admin">
+  <header class="appbar">
+    <div class="appbar-left">
+      <a class="brand-mark small" href="/" aria-label="100 к одному — на главную">
+        <span class="brand-100">100</span>
+        <span class="brand-word">к одному</span>
+      </a>
+      <span class="appbar-divider"></span>
+      <span class="room-chip" id="roomCode"></span>
+      <span class="appbar-meta" id="meta"></span>
+    </div>
+    <div class="appbar-actions">
+      <a id="tvLink" class="btn-link" href="#" target="_blank">Экран для ТВ</a>
+      <a href="/" class="ghost-link">На главную</a>
+    </div>
+  </header>
+
+  <main class="admin-shell">
+    <div class="admin-main">
+      <section class="panel" id="setupCard">
+        <div class="panel-head">
+          <div>
+            <div class="panel-label">Шаг 1</div>
+            <h2>Пак вопросов</h2>
+          </div>
+          <span id="packStatus" class="muted small"></span>
+        </div>
+        <div class="pack-row">
+          <select id="packSelect" aria-label="Пак вопросов"></select>
+          <button id="loadPack" class="primary">Загрузить пак</button>
+          <button id="changePack" class="secondary hidden">Сменить пак</button>
+        </div>
+      </section>
+
+      <section class="panel" id="controlCard">
+        <div class="round-top">
+          <div class="round-title">
+            <div class="panel-label">Шаг 2</div>
+            <h2>Раунд</h2>
+            <span id="phasePill" class="pill">Лобби</span>
+          </div>
+          <div class="round-actions">
+            <button id="startRound" class="primary">Начать игру</button>
+            <button id="finishGame" class="warn">Завершить</button>
+          </div>
+        </div>
+        <div id="roundCounter"></div>
+
+        <div class="faceoff-box hidden" id="faceoffBox">
+          <div class="faceoff-box-head">
+            <div class="panel-label">Розыгрыш</div>
+            <span id="faceoffStatus" class="pill"></span>
+          </div>
+          <div class="faceoff-participants">
+            <label class="field">
+              <span>Команда 1</span>
+              <select id="faceoffTeam1" aria-label="Участник розыгрыша от команды 1"></select>
+            </label>
+            <label class="field">
+              <span>Команда 2</span>
+              <select id="faceoffTeam2" aria-label="Участник розыгрыша от команды 2"></select>
+            </label>
+          </div>
+          <div class="faceoff-note">Капитан всегда первый. Простая игра: капитан. Двойная: 2-й игрок в порядке. Тройная: 3-й. Если игрок уже играл в розыгрыше, берётся следующий.</div>
+          <div class="row faceoff-actions">
+            <button id="resetBuzz" class="secondary">Сбросить нажатие</button>
+            <button id="nextFaceoff" class="secondary">Следующие участники</button>
+            <button id="faceoffMiss" class="warn">Мимо</button>
+          </div>
+        </div>
+
+        <div id="questionBlock" class="hidden">
+          <div class="qtext" id="questionText"></div>
+          <div id="roundMeta"></div>
+
+          <div class="show-question hidden" id="showQuestionBox">
+            <button id="showQuestion" class="primary">Показать вопрос / Приём ответов</button>
+            <span id="showQuestionHint" class="muted small"></span>
+          </div>
+
+          <div class="turn-info hidden" id="turnInfo">
+            <div>
+              <span class="turn-label">Сейчас отвечает</span>
+              <b id="turnName"></b>
+              <span id="turnTeam" class="muted small"></span>
+            </div>
+            <div class="row">
+              <button id="nextTurn" class="secondary">Следующий</button>
+              <button id="strikeBtn" class="warn">Страйк</button>
+            </div>
+          </div>
+
+          <div id="answersHint" class="answers-hint"></div>
+          <div id="answers"></div>
+
+          <div class="steal-panel hidden" id="stealPanel"></div>
+        </div>
+      </section>
+
+      <section class="panel hidden" id="reverseCard">
+        <div class="panel-head">
+          <div>
+            <div class="panel-label">Спецраунд</div>
+            <h2>Игра наоборот</h2>
+          </div>
+          <span class="pill" id="reverseStagePill">Совещание</span>
+        </div>
+        <div id="reverseInfo"></div>
+        <div class="reverse-timer" id="reverseTimer"></div>
+        <div id="reverseChoiceGrid" class="grid2 reverse-grid">
+          <label class="field">
+            <span id="reverseChoiceLabel1">Версия команды 1</span>
+            <select id="reverseChoice1"></select>
+          </label>
+          <label class="field">
+            <span id="reverseChoiceLabel2">Версия команды 2</span>
+            <select id="reverseChoice2"></select>
+          </label>
+        </div>
+        <div class="row panel-actions">
+          <button id="lockReverse" class="primary">Зафиксировать версии</button>
+        </div>
+        <div id="reverseAnswersHint" class="muted small hidden"></div>
+        <div id="reverseAnswers" class="reverse-answers hidden"></div>
+      </section>
+
+      <section class="panel hidden" id="bigCard">
+        <div class="panel-head">
+          <div>
+            <div class="panel-label">Спецраунд</div>
+            <h2>Большая игра</h2>
+          </div>
+        </div>
+        <div id="bigInfo" class="muted small"></div>
+        <div id="bigResult" class="big-result hidden"></div>
+        <div class="grid2 big-fields">
+          <label class="field">
+            <span>Игрок 1</span>
+            <select id="bigP1" aria-label="Первый игрок большой игры"></select>
+          </label>
+          <label class="field">
+            <span>Игрок 2</span>
+            <select id="bigP2" aria-label="Второй игрок большой игры"></select>
+          </label>
+        </div>
+        <div class="big-timer-panel">
+          <label class="field">
+            <span>Время игрока 1</span>
+            <select id="bigTime1" aria-label="Время игрока 1">
+              <option value="10">10 секунд</option>
+              <option value="15">15 секунд</option>
+              <option value="20">20 секунд</option>
+              <option value="30">30 секунд</option>
+              <option value="45">45 секунд</option>
+              <option value="60">60 секунд</option>
+              <option value="90">90 секунд</option>
+              <option value="120">120 секунд</option>
+            </select>
+          </label>
+          <button id="bigTimer1" class="secondary">Запустить таймер 1</button>
+          <label class="field">
+            <span>Время игрока 2</span>
+            <select id="bigTime2" aria-label="Время игрока 2">
+              <option value="10">10 секунд</option>
+              <option value="15">15 секунд</option>
+              <option value="20">20 секунд</option>
+              <option value="30">30 секунд</option>
+              <option value="45">45 секунд</option>
+              <option value="60">60 секунд</option>
+              <option value="90">90 секунд</option>
+              <option value="120">120 секунд</option>
+            </select>
+          </label>
+          <button id="bigTimer2" class="secondary">Запустить таймер 2</button>
+          <button id="bigTimerStop" class="warn">Остановить таймер</button>
+          <div id="bigTimerDisplay" class="big-timer-display"></div>
+        </div>
+        <div id="bigStage" class="big-stage"></div>
+        <div id="bigTable" class="table-scroll"></div>
+        <div class="row panel-actions">
+          <button id="bigCheck1" class="primary">Проверить игрока 1</button>
+          <button id="bigCheck2" class="primary hidden">Проверить игрока 2</button>
+          <button id="bigDuplicate" class="warn hidden">Сигнал: повтор</button>
+          <button id="bigScore" class="secondary">Пересчитать всё</button>
+        </div>
+      </section>
+
+      <section class="panel hidden" id="summaryCard">
+        <div class="panel-head">
+          <div>
+            <div class="panel-label">Итоги</div>
+            <h2>Результаты игры</h2>
+          </div>
+        </div>
+        <div id="summaryWinner" class="summary-main-winner"></div>
+        <div id="summaryContent"></div>
+      </section>
+    </div>
+
+    <aside class="admin-side">
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <div class="panel-label">Табло</div>
+            <h2>Команды</h2>
+          </div>
+        </div>
+        <div id="teams" class="teams-list"></div>
+        <div id="rosterHint" class="roster-hint"></div>
+      </section>
+
+      <details class="panel rules-panel">
+        <summary>Что делать ведущему</summary>
+        <div class="rules-body">
+          <p class="muted small" id="adminPhaseHint"></p>
+          <ul>
+            <li>Сначала прочитайте вопрос вслух и нажмите «Показать вопрос / Приём ответов».</li>
+            <li>В розыгрыше игроки нажимают кнопку. Нажмите карточку, которую назвал участник, или «Мимо».</li>
+            <li>В основной игре открывайте карточки по очереди. Промах — кнопка «Страйк».</li>
+            <li>После трёх страйков — блиц-опрос: откройте карточку капитана или «Мимо».</li>
+            <li>В игре наоборот выберите версии команд, зафиксируйте их, затем открывайте карточки по одной.</li>
+            <li>В большой игре выберите ответы игроков, при необходимости запустите таймер и проверьте игроков по очереди.</li>
+            <li>Большая игра — финальный раунд: после неё нажмите «Завершить».</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="panel details-panel">
+        <summary>Игроки и журнал</summary>
+        <div class="details-body">
+          <div>
+            <h3>Игроки</h3>
+            <div id="players"></div>
+          </div>
+          <div>
+            <h3>Журнал</h3>
+            <pre id="log" class="log-box"></pre>
+          </div>
+        </div>
+      </details>
+    </aside>
+  </main>
+
+  <script type="module" src="/js/admin.js"></script>
+</body>
+</html>

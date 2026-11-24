@@ -1,0 +1,21 @@
+{
+  "name": "svoy_igra_ii",
+  "version": "1.0.0",
+  "description": "Web game 'Svoya Igra' (Jeopardy-style) with Node.js and Socket.IO",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^4.21.0",
+    "multer": "^2.5.0",
+    "nanoid": "^5.0.0",
+    "qrcode": "^1.5.4",
+    "sharp": "^0.35.5",
+    "socket.io": "^4.7.0"
+  }
+}

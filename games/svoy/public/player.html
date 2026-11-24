@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Игрок — Своя игра</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+<div class="container">
+  <h1>Своя игра</h1>
+  <div id="me" class="card"></div>
+  <div id="status" class="card"></div>
+  <button id="buzz" class="buzz-btn" disabled>Я ОТВЕЧАЮ!</button>
+  <div id="finalPlayer" class="card" style="display:none"></div>
+  <h3>Игроки</h3>
+  <div id="players" class="players-bar"></div>
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/player.js"></script>
+</body>
+</html>

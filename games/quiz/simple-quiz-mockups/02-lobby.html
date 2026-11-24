@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Quiz — Лобби</title>
+  <style>
+    :root {
+      --bg: #0b0f1a;
+      --surface: #141a2b;
+      --text: #e8eefc;
+      --accent: #22d3ee;
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, sans-serif;
+    }
+
+    .screen {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 24px;
+      gap: 16px;
+    }
+
+    h1 { font-size: 32px; font-weight: 700; letter-spacing: -0.02em; }
+    
+    .question-preview {
+      background: var(--surface);
+      padding: 20px;
+      border-radius: var(--radius);
+      min-height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 18px;
+      line-height: 1.4;
+    }
+
+    .player-list {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .player-card {
+      background: var(--surface);
+      padding: 16px;
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .player-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    .player-info { flex: 1; }
+    .player-nick { font-size: 18px; font-weight: 600; }
+    .player-status { font-size: 14px; opacity: 0.7; }
+
+    .waiting-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      background: rgba(34, 211, 238, 0.2);
+      color: var(--accent);
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .admin-controls {
+      display: flex;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .btn {
+      padding: 12px 24px;
+      border-radius: var(--radius);
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-secondary { background: transparent; color: var(--text); opacity: 0.7; }
+  </style>
+</head>
+<body>
+  <div class="screen">
+    <h1>⏳ Ждём игроков...</h1>
+
+    <div class="question-preview">
+      <span style="opacity: 0.6;">Вопрос появится в начале раунда</span>
+    </div>
+
+    <div class="player-list">
+      <!-- Игрок 1 -->
+      <div class="player-card">
+        <div class="player-avatar" style="background: #22d3ee;">А</div>
+        <div class="player-info">
+          <div class="player-nick">Alex</div>
+          <div class="player-status"><span class="waiting-badge">ждёт подключения</span></div>
+        </div>
+      </div>
+
+      <!-- Игрок 2 -->
+      <div class="player-card">
+        <div class="player-avatar" style="background: #a3e635;">М</div>
+        <div class="player-info">
+          <div class="player-nick">Maria</div>
+          <div class="player-status"><span class="waiting-badge">ждёт подключения</span></div>
+        </div>
+      </div>
+
+      <!-- Игрок 3 -->
+      <div class="player-card">
+        <div class="player-avatar" style="background: #fbbf24;">Д</div>
+        <div class="player-info">
+          <div class="player-nick">Dmitry</div>
+          <div class="player-status"><span class="waiting-badge">ждёт подключения</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="admin-controls">
+      <button class="btn btn-secondary">Настроить вопросы</button>
+      <button class="btn btn-primary">Начать игру</button>
+    </div>
+  </div>
+</body>
+</html>

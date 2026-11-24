@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Своя игра</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body class="lobby">
+  <div class="container">
+    <h1>Своя игра</h1>
+    <div class="grid2">
+      <section class="card">
+        <h2>Создать комнату (администратор)</h2>
+        <p>Вы создаёте комнату и управляете игрой с ноутбука.</p>
+        <input id="roomName" placeholder="Название комнаты (необязательно)" />
+        <button id="createRoom">Создать игру</button>
+        <div id="createResult" class="muted"></div>
+        <p class="muted"><a href="/editor.html" target="_blank">Редактор паков и картинок</a></p>
+      </section>
+      <section class="card join-card">
+        <h2>Подключиться к игре (игрок)</h2>
+        <label for="playerName" class="join-label">Ваш ник</label>
+        <input id="playerName" class="join-input" placeholder="Введите ваш ник" />
+        <h3 class="join-subtitle">Активные комнаты</h3>
+        <div id="roomsList" class="list rooms-big"></div>
+      </section>
+    </div>
+  </div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+    const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const phaseLabel = (p) => ({lobby:'Лобби',round1:'1 раунд',round2:'2 раунд',round3:'3 раунд',round1_done:'1 раунд завершён',round2_done:'2 раунд завершён',round3_done:'3 раунд завершён',final:'Финал',finished:'Игра завершена'}[p] || p);
+    const roomsList = document.getElementById('roomsList');
+    const savedName = localStorage.getItem('si_name') || sessionStorage.getItem('si_name') || '';
+    const playerNameInput = document.getElementById('playerName');
+    if (savedName && playerNameInput) playerNameInput.value = savedName;
+    socket.on('rooms:list', (rooms) => {
+      if (!rooms.length) { roomsList.innerHTML = '<div class="muted" style="font-size:20px">Пока нет активных комнат</div>'; return; }
+      roomsList.innerHTML = rooms.map(r => `<div class="room-item room-item-big"><div class="room-info"><div class="room-title"><b>${esc(r.name)}</b> <span class="muted">(${esc(r.id)})</span></div><div class="room-meta muted">Игроков: ${Number(r.players) || 0} · ${esc(phaseLabel(r.phase))}${r.packTitle ? ' · ' + esc(r.packTitle) : ''}</div></div>${r.phase === 'finished' ? '<button class="join-room-btn" disabled>Завершена</button>' : `<button class="join-room-btn" data-id="${esc(r.id)}">Войти</button>`}</div>`).join('');
+      roomsList.querySelectorAll('button[data-id]').forEach(b => b.onclick = () => {
+        const name = document.getElementById('playerName').value.trim();
+        if (!name) return alert('Введите ник, чтобы войти в игру');
+        localStorage.setItem('si_name', name);
+        socket.emit('player:join', { roomId: b.dataset.id, name }, (res) => {
+          if (!res.ok) return alert(res.error||'Ошибка');
+          sessionStorage.setItem('si_role','player');
+          sessionStorage.setItem('si_room', b.dataset.id);
+          sessionStorage.setItem('si_player', res.playerId);
+          sessionStorage.setItem('si_player_token', res.playerToken || '');
+          sessionStorage.setItem('si_name', name);
+          location.href = '/player.html';
+        });
+      });
+    });
+    document.getElementById('createRoom').onclick = () => {
+      const name = document.getElementById('roomName').value.trim();
+      socket.emit('admin:createRoom', { name }, (res) => {
+        if (!res.ok) return alert(res.error||'Ошибка');
+        sessionStorage.setItem('si_role','admin');
+        sessionStorage.setItem('si_room', res.roomId);
+        sessionStorage.setItem('si_admin_token', res.adminToken || '');
+        const base = location.origin;
+        document.getElementById('createResult').innerHTML = `Комната создана: <b>${esc(res.roomId)}</b><br>
+          <a href="/admin.html">Открыть панель администратора</a><br>
+          <a href="/display.html" target="_blank">Открыть экран для ТВ</a><br>
+          <span class="muted">Ссылки для этой же машины: ${esc(base)}/admin.html и ${esc(base)}/display.html (после открытия они подключатся к комнате из сессии)</span>`;
+        location.href = '/admin.html';
+      });
+    };
+  </script>
+</body>
+</html>

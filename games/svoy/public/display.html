@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ТВ — Своя игра</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body class="tv">
+<div class="container tv-container" style="max-width:none;width:100%;padding:10px 14px;">
+  <div class="tv-header">
+    <div class="row" style="justify-content:space-between;align-items:center">
+      <h1 id="title">Своя игра</h1>
+      <div id="roomInfo" class="muted"></div>
+    </div>
+    <div id="phaseInfo" class="muted" style="margin-bottom:4px"></div>
+  </div>
+  <div class="tv-main">
+    <div id="qrLobby" class="qr-lobby" style="display:none">
+      <div class="qr-lobby-inner">
+        <div class="qr-title">Отсканируйте QR-код, чтобы присоединиться к игре</div>
+        <img id="qrImg" alt="QR код для входа" />
+        <div id="qrUrl" class="qr-url"></div>
+      </div>
+    </div>
+    <div id="board"></div>
+    <div id="current" class="question-box" style="display:none"></div>
+    <div id="finalBox" class="question-box" style="display:none"></div>
+    <!-- Итоги игры: победители и салют (показывается после «Завершить игру») -->
+    <div id="finishBox" class="question-box" style="display:none"></div>
+  </div>
+  <div class="tv-footer">
+    <h3 class="tv-players-title">Игроки</h3>
+    <div id="players" class="players-bar"></div>
+  </div>
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/sound.js"></script>
+<script src="/js/fireworks.js"></script>
+<script src="/js/display.js"></script>
+</body>
+</html>

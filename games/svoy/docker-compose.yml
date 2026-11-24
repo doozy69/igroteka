@@ -1,0 +1,20 @@
+# Запуск: docker compose up -d --build
+# На FriendlyWrt плагин compose может отсутствовать — тогда используйте docker run
+# (команда есть в README/инструкции).
+services:
+  svoy-igra:
+    build: .
+    image: svoy-igra:latest
+    container_name: svoy-igra
+    restart: unless-stopped
+    init: true
+    ports:
+      - "8102:8102"
+    environment:
+      PORT: "8102"
+      TZ: "Europe/Moscow"
+    volumes:
+      # Паки, банк «Кота в мешке» и картинки вопросов лежат здесь.
+      - ./questions:/app/questions
+      # Конфиг читается при старте; правится без пересборки, затем restart.
+      - ./game.config.json:/app/game.config.json:ro

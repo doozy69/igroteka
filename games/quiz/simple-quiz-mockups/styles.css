@@ -1,0 +1,62 @@
+:root {
+  --bg: #0b0f1a;
+  --surface: #141a2b;
+  --surface-2: #0e1424;
+  --border: rgba(255, 255, 255, 0.08);
+  --text: #e8eefc;
+  --muted: #93a1bd;
+  --accent: #22d3ee;
+  --success: #a3e635;
+  --danger: #fb7185;
+  --radius: 18px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* На мобильных — CSS px для точной верификации */
+body.phone { width: 390px; height: 844px; overflow: hidden; }
+
+/* Для ТВ-табло (будущее) */
+body.tvpage { width: 1920px; height: 1080px; overflow: hidden; }
+
+.screen {
+  width: 100%;
+  height: 100%;
+  background: var(--bg);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  overflow: hidden;
+}
+
+/* Критично: кнопка "Я знаю!" */
+.buzz-button {
+  min-height: 32vh; /* Не меньше трети экрана */
+  font-size: clamp(24px, 6vw, 36px);
+  font-weight: 700;
+  touch-action: manipulation;
+  user-select: none;
+}
+
+/* Очередь игроков */
+.queue-item {
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Тайминги — tabular-nums */
+.ti { font-variant-numeric: tabular-nums; }

@@ -1,0 +1,108 @@
+{
+  "title": "Классика",
+  "rounds": [
+    {
+      "type": "simple",
+      "text": "Что делает человек, когда просыпается?",
+      "answers": [
+        { "text": "Умывается", "points": 30, "aliases": ["умыться", "вода"] },
+        { "text": "Завтракает", "points": 24, "aliases": ["ест", "завтрак"] },
+        { "text": "Смотрит телефон", "points": 18, "aliases": ["телефон"] },
+        { "text": "Пьёт кофе", "points": 12, "aliases": ["кофе"] },
+        { "text": "Делает зарядку", "points": 10, "aliases": ["зарядка"] },
+        { "text": "Идёт в душ", "points": 6, "aliases": ["душ"] }
+      ]
+    },
+    {
+      "type": "double",
+      "text": "Что есть в каждом доме?",
+      "answers": [
+        { "text": "Холодильник", "points": 32, "aliases": [] },
+        { "text": "Кровать", "points": 24, "aliases": ["кровать"] },
+        { "text": "Стол", "points": 18, "aliases": ["стол"] },
+        { "text": "Стул", "points": 12, "aliases": ["стул"] },
+        { "text": "Телевизор", "points": 8, "aliases": ["тв"] },
+        { "text": "Лампа", "points": 6, "aliases": ["свет"] }
+      ]
+    },
+    {
+      "type": "triple",
+      "text": "Что люди делают в интернете?",
+      "answers": [
+        { "text": "Смотрят видео", "points": 34, "aliases": ["ютуб", "видео"] },
+        { "text": "Общаются", "points": 26, "aliases": ["чат", "соцсети"] },
+        { "text": "Играют", "points": 16, "aliases": ["игры"] },
+        { "text": "Работают", "points": 10, "aliases": ["работа"] },
+        { "text": "Учатся", "points": 8, "aliases": ["учеба"] },
+        { "text": "Покупают", "points": 6, "aliases": ["покупки", "магазин"] }
+      ]
+    },
+    {
+      "type": "reverse",
+      "text": "Самая известная профессия?",
+      "answers": [
+        { "text": "Врач", "points": 15, "aliases": ["доктор"] },
+        { "text": "Учитель", "points": 30, "aliases": ["педагог"] },
+        { "text": "Программист", "points": 60, "aliases": ["айтишник"] },
+        { "text": "Полицейский", "points": 120, "aliases": ["полиция"] },
+        { "text": "Космонавт", "points": 180, "aliases": ["космос"] },
+        { "text": "Дирижёр", "points": 240, "aliases": ["дирижер"] }
+      ]
+    },
+    {
+      "type": "big",
+      "questions": [
+        {
+          "text": "Что люди делают в выходные?",
+          "answers": [
+            { "text": "Отдыхают", "points": 40, "aliases": ["отдых"] },
+            { "text": "Спят", "points": 30, "aliases": ["сон"] },
+            { "text": "Гуляют", "points": 20, "aliases": ["прогулка"] },
+            { "text": "Смотрят кино", "points": 10, "aliases": ["фильм"] },
+            { "text": "Готовят", "points": 6, "aliases": ["еда"] }
+          ]
+        },
+        {
+          "text": "Что можно увидеть в зоопарке?",
+          "answers": [
+            { "text": "Льва", "points": 38, "aliases": ["лев"] },
+            { "text": "Слона", "points": 28, "aliases": ["слон"] },
+            { "text": "Обезьяну", "points": 18, "aliases": ["обезьяна"] },
+            { "text": "Жирафа", "points": 10, "aliases": ["жираф"] },
+            { "text": "Фламинго", "points": 5, "aliases": ["птица"] }
+          ]
+        },
+        {
+          "text": "Какая бывает погода?",
+          "answers": [
+            { "text": "Солнечная", "points": 42, "aliases": ["солнце"] },
+            { "text": "Дождливая", "points": 26, "aliases": ["дождь"] },
+            { "text": "Снежная", "points": 16, "aliases": ["снег"] },
+            { "text": "Ветреная", "points": 9, "aliases": ["ветер"] },
+            { "text": "Пасмурная", "points": 5, "aliases": ["облачно"] }
+          ]
+        },
+        {
+          "text": "Что есть в сумке у женщины?",
+          "answers": [
+            { "text": "Косметика", "points": 40, "aliases": ["помада", "тушь"] },
+            { "text": "Кошелек", "points": 28, "aliases": ["деньги"] },
+            { "text": "Ключи", "points": 16, "aliases": ["ключ"] },
+            { "text": "Телефон", "points": 9, "aliases": ["смартфон"] },
+            { "text": "Зеркало", "points": 5, "aliases": [] }
+          ]
+        },
+        {
+          "text": "Что делает человека счастливым?",
+          "answers": [
+            { "text": "Семья", "points": 42, "aliases": ["близкие"] },
+            { "text": "Любовь", "points": 30, "aliases": [] },
+            { "text": "Деньги", "points": 18, "aliases": [] },
+            { "text": "Путешествия", "points": 10, "aliases": ["поездки"] },
+            { "text": "Друзья", "points": 6, "aliases": [] }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "igroteka-portal",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Единая панель игр: карточки, ссылки и QR для гостей",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node server.mjs"
+  },
+  "dependencies": {
+    "qrcode": "^1.5.4"
+  }
+}

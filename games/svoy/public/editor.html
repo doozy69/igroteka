@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Редактор паков — Своя игра</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/editor.css" />
+</head>
+<body class="editor-page">
+<div class="container editor-container">
+  <header class="editor-header">
+    <div>
+      <h1>Редактор паков</h1>
+      <div class="muted" id="editorStatus">Загрузка…</div>
+    </div>
+    <div class="row">
+      <a class="muted" href="/admin.html">Панель ведущего</a>
+      <a class="muted" href="/" target="_blank">Главная</a>
+    </div>
+  </header>
+
+  <section class="card" id="tokenCard" style="display:none">
+    <h2>Доступ к редактору</h2>
+    <p class="muted">Введите токен редактора из <code>game.config.json</code> или переменной окружения <code>EDITOR_TOKEN</code>.</p>
+    <div class="row">
+      <input id="editorToken" type="password" placeholder="Токен редактора" autocomplete="off" enterkeyhint="go" />
+      <button id="saveToken" type="button">Войти</button>
+    </div>
+    <div id="tokenError" class="muted"></div>
+  </section>
+
+  <section class="card" id="packCard" style="display:none">
+    <div class="editor-toolbar">
+      <label class="editor-field editor-field-grow">
+        <span>Пак</span>
+        <select id="packSelect"></select>
+      </label>
+      <label class="editor-field editor-field-grow">
+        <span>Название пака</span>
+        <input id="packTitle" placeholder="Название пака" />
+      </label>
+      <div class="row editor-actions">
+        <button id="newPack" class="secondary" type="button">Новый пак</button>
+        <button id="savePack" type="button">Сохранить</button>
+        <button id="cleanupImages" class="secondary" type="button" disabled>Удалить лишние картинки</button>
+        <button id="downloadPack" class="secondary" type="button">Скачать JSON</button>
+        <label class="secondary editor-button-like">Загрузить JSON<input id="importPack" type="file" accept="application/json,.json" hidden /></label>
+      </div>
+    </div>
+    <div class="row" style="margin-top:10px">
+      <span id="saveStatus" class="muted"></span>
+      <span id="packMeta" class="muted"></span>
+    </div>
+    <div class="muted" style="margin-top:6px;font-size:13px">
+      Картинки хранятся локально. Внешние ссылки не поддерживаются: скачайте файл и загрузите его кнопкой «Загрузить».
+    </div>
+  </section>
+
+  <div id="editorTabs" class="editor-tabs" style="display:none"></div>
+  <div id="editorRoot"></div>
+</div>
+
+<div id="paintModal" class="paint-modal" style="display:none">
+  <div class="paint-dialog" role="dialog" aria-modal="true" aria-label="Редактор картинки">
+    <header class="paint-header">
+      <div>
+        <h2>Редактор картинки</h2>
+        <div class="muted" id="paintSubtitle"></div>
+      </div>
+      <button id="paintClose" class="secondary" type="button" aria-label="Закрыть">×</button>
+    </header>
+
+    <div class="paint-toolbar">
+      <button type="button" class="paint-tool" data-paint-tool="select">Мышь</button>
+      <button type="button" class="paint-tool active" data-paint-tool="brush">Кисть</button>
+      <button type="button" class="paint-tool" data-paint-tool="eraser">Ластик</button>
+      <button type="button" class="paint-tool" data-paint-tool="rect">Прямоугольник</button>
+      <button type="button" class="paint-tool" data-paint-tool="ellipse">Эллипс</button>
+      <button type="button" class="paint-tool" data-paint-tool="line">Линия</button>
+
+      <span class="paint-sep"></span>
+
+      <label>Цвет <input type="color" id="paintColor" value="#000000" /></label>
+      <label>Заливка <input type="color" id="paintFill" value="#ffffff" /></label>
+      <label class="paint-check"><input type="checkbox" id="paintFillEnabled" checked /> заливать</label>
+      <span class="paint-size-label">Размер
+        <span class="paint-size-control">
+          <input type="number" id="paintSize" min="1" max="500" step="1" value="18" inputmode="numeric" aria-label="Размер кисти" />
+          <span class="paint-size-arrows">
+            <button type="button" id="paintSizeUp" aria-label="Увеличить размер">▲</button>
+            <button type="button" id="paintSizeDown" aria-label="Уменьшить размер">▼</button>
+          </span>
+          <span class="paint-size-unit">px</span>
+        </span>
+      </span>
+
+      <span class="paint-sep"></span>
+
+      <button type="button" id="paintUndo" class="secondary">Отменить</button>
+      <button type="button" id="paintRedo" class="secondary">Повторить</button>
+      <button type="button" id="paintReset" class="secondary">Сброс</button>
+      <label class="paint-check"><input type="checkbox" id="paintShowOriginal" /> Оригинал</label>
+    </div>
+
+    <div class="paint-canvas-wrap">
+      <div id="paintStage" class="paint-stage">
+        <img id="paintOriginal" alt="" />
+        <canvas id="paintCanvas"></canvas>
+      </div>
+    </div>
+
+    <footer class="paint-footer">
+      <span id="paintStatus" class="muted"></span>
+      <button type="button" id="paintCleanAnswer" class="secondary">Сделать чистой картинкой ответом</button>
+      <button type="button" id="paintSave" class="good">Сохранить вопрос</button>
+      <button type="button" id="paintCancel" class="secondary">Отмена</button>
+    </footer>
+  </div>
+</div>
+
+<script src="/vendor/fabric.min.js"></script>
+<script src="/js/editor.js"></script>
+</body>
+</html>

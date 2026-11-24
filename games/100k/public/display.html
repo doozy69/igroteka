@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#060a14" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <title>ТВ — 100 к одному</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body class="tv">
+  <div class="tv-stage">
+    <header class="tv-topbar">
+      <div class="tv-team" id="team1">
+        <div class="team-role">Счёт</div>
+        <div class="name"></div>
+        <div class="score">0</div>
+        <div class="tv-roster"></div>
+      </div>
+
+      <div class="tv-lockup">
+        <div class="tv-lockup-100">100</div>
+        <div class="tv-lockup-word">к одному</div>
+        <div class="tv-round" id="roundInfo"></div>
+        <div class="tv-bank"><small>Банк</small><span id="fund">0</span></div>
+      </div>
+
+      <div class="tv-team" id="team2">
+        <div class="team-role">Счёт</div>
+        <div class="name"></div>
+        <div class="score">0</div>
+        <div class="tv-roster"></div>
+      </div>
+    </header>
+
+    <main class="tv-main">
+      <div id="lobby" class="tv-lobby"></div>
+      <div id="faceoff" class="tv-faceoff hidden"></div>
+      <div id="turn" class="tv-turn hidden"></div>
+      <div id="question" class="tv-question"></div>
+      <div id="tvHint" class="tv-hint"></div>
+      <div id="mainWinner" class="tv-main-winner hidden"></div>
+      <div id="tvTimer" class="tv-timer hidden"></div>
+      <div id="board" class="tv-board"></div>
+      <div id="strikes" class="tv-strikes"></div>
+      <div id="big" class="tv-big hidden"></div>
+      <div id="winner" class="tv-winner hidden"></div>
+    </main>
+  </div>
+  <button id="soundToggle" class="sound-toggle" title="Звук" aria-label="Включить или выключить звук">🔊</button>
+  <script type="module" src="/js/display.js"></script>
+</body>
+</html>
